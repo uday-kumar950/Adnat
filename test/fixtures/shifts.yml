@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  organisation: one
+  date: 2019-11-13
+  start: MyString
+  finish: MyString
+  break: 1
+
+two:
+  user: two
+  organisation: two
+  date: 2019-11-13
+  start: MyString
+  finish: MyString
+  break: 1

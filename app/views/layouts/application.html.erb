@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Adnat</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <p class="navbar-text float-right">
+		<% if user_signed_in? %>
+		  Logged in as <strong><%= current_user.email %></strong> |
+		  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+		<% else %>
+		  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+		  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+		<% end %>
+	</p>
+	<div class="clearfix">
+		<%if notice%>
+	  		<div class="alert alert-primary" role="alert"><%= notice %></div>
+	  	<%end%>
+	  	<%if alert%>
+	  		<div class="alert alert-danger" role="alert"><%= alert %></div>
+	  	<%end%>
+  	</div>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>

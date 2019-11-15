@@ -1,0 +1,53 @@
+<div class="container">
+<h3>Shifts</h3>
+
+<div class="text-center" id="show_shifts">  
+<%= form_for :shift do |form| %>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="text-center">Employee Name</th>
+      <th class="text-center">Shift Date</th>
+      <th class="text-center">Start Time</th>
+      <th class="text-center">Finish Time</th>
+      <th class="text-center">Break Length (minutes)</th>
+      <th class="text-center">Hours Worked</th>
+      <th class="text-center">Shift Cost</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  	<%shift_cost_per_minute = (current_user.organisation.hourly_rate / 60)%>
+    <% @shifts.each do |shift| %>
+      <tr>
+        <td><%= shift.user.name %></td>
+        <td><%= shift.date.to_date.strftime("%d/%m/%Y") %></td>
+        <td><%= shift.start.to_time.strftime("%H:%M %p") %></td>
+        <td><%= shift.finish.to_time.strftime("%H:%M %p") %></td>
+        <td><%= shift.break_length %></td>
+        <td>
+        	<%worked_in_min = (((shift.finish.to_time - shift.start.to_time)/ 60) - shift.break_length).to_i%>
+        	<%=  Shift.time_conversion(worked_in_min) %>        		
+        </td>
+        <td><b>&#36; <%= (shift_cost_per_minute * worked_in_min).round(2)%></b></td>
+      </tr>     
+    <% end %>
+
+    <tr>
+          <td><%= current_user.name %></td>
+          <td><%= form.date_field :date ,class: "form-control",required: true, min: Date.today - 1.year,max: Date.today%></td>
+          <td><%= form.text_field :start ,class: "form-control",required: true%></td>
+          <td><%= form.text_field :finish ,class: "form-control",required: true%></td>
+          <td><%= form.number_field :break_length ,class: "form-control",required: true%></td>
+          <td colspan="2">
+          	<%= form.submit "Create Shift",class: "btn btn-success"%>          		
+          </td>
+    </tr>
+  </tbody>
+</table>
+<%end%>
+</div>
+
+<%= link_to 'Back', organisation_path(current_user.organisation) %>
+
+</div>

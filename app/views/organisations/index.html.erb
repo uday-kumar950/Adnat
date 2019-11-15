@@ -1,0 +1,13 @@
+<h3>Organisations</h3>
+<br>
+  <ul class="container">
+    <% @organisations.each do |organisation| %>
+        <li style="font-size: 17px">
+              <%= organisation.name %> (<b>&#36;</b> <%= organisation.hourly_rate %>)
+              <%= link_to 'Edit', edit_organisation_path(organisation) %> | <%= link_to 'Join', join_in_or_out_organisation_path(organisation,"true") %> 
+        </li>
+        <br>
+    <% end %>
+  </ul>
+<br>
+<%= link_to 'New Organisation', new_organisation_path %>

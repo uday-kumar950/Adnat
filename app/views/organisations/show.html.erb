@@ -1,0 +1,13 @@
+<%if @organisation == current_user.organisation%>
+	<h3 class="text-center">
+	  <%= @organisation.name %> (Hourly rate: <b>$<%= @organisation.hourly_rate %></b>)
+	</h3>
+
+	<div class="col-md-12">
+		<h4 class="text-center">
+		<%= link_to 'View Shifts', shifts_path %> | <%= link_to 'Edit', edit_organisation_path(@organisation) %> | <%= link_to 'Leave', join_in_or_out_organisation_path(@organisation) %>
+		</h4>
+	</div>
+<%else%>
+	<div class="text-center" style="color:red">In order to see Shift details, Please join organisation (<b><%= @organisation.name%></b>)</div>
+<%end%>
