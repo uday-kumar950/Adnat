@@ -22,12 +22,11 @@ ActiveRecord::Schema.define(version: 20191113185134) do
   create_table "shifts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
     t.date "date"
-    t.string "start"
-    t.string "finish"
-    t.integer "break"
+    t.datetime "start"
+    t.datetime "finish"
+    t.integer "break_length"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "break_length"
     t.bigint "organisation_id"
     t.index ["organisation_id"], name: "index_shifts_on_organisation_id"
     t.index ["user_id"], name: "index_shifts_on_user_id"

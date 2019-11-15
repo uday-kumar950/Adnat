@@ -1,0 +1,24 @@
+<%= form_for @shift,remote: true do |form| %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= current_user.name %></div>
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_field :date ,class: "form-control",required: true, min: Date.today - 1.year,max: Date.today%></div>
+  <div class="field">
+    <%= form.label :start %>
+    <%= form.text_field :start ,class: "form-control",required: true,value: form.object.start.to_time.localtime.strftime("%H:%M")%>      
+  </div>
+  <div class="field">
+    <%= form.label :finish %>
+    <%= form.text_field :finish ,class: "form-control",required: true,value: form.object.finish.to_time.localtime.strftime("%H:%M")%>      
+  </div>
+  <div class="field">
+    <%= form.label :break_length %>
+    <%= form.number_field :break_length ,class: "form-control",required: true%>      
+  </div>
+
+  <div class="actions">
+    <%= form.submit %> | <%= link_to 'Back',shifts_path%>
+  </div>
+<% end %>
