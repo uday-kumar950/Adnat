@@ -6,6 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
- Organisation.create(name: "Domino's Pizza", hourly_rate: 10.0)
- Organisation.create(name: "Truffles", hourly_rate: 15.0)
- Organisation.create(name: "Starbucks", hourly_rate: 20.0)
+ Organisation.find_or_create_by(name: "Domino's Pizza", hourly_rate: 10.0)
+ Organisation.find_or_create_by(name: "Truffles", hourly_rate: 15.0)
+ Organisation.find_or_create_by(name: "Starbucks", hourly_rate: 20.0)
