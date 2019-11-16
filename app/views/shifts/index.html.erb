@@ -1,5 +1,6 @@
 <div class="container">
-<h3>Shifts</h3>
+
+<h3 class="text-center">Shifts</h3>
 
 <div class="text-center" id="show_shifts">  
 <%= form_for :shift,remote: true do |form| %>
@@ -30,7 +31,11 @@
         	<%=  Shift.time_conversion(worked_in_min) %>        		
         </td>
         <td><b>&#36; <%= (shift_cost_per_minute * worked_in_min).round(2)%></b></td>
-        <td><%= link_to 'Edit', edit_shift_path(shift) %> | <%= link_to 'Delete', shift_path(shift),method: :delete ,remote: true%></td>
+        <td>
+          <%if shift.user_id == current_user.id%>
+            <%= link_to 'Edit', edit_shift_path(shift) %> | <%= link_to 'Delete', shift_path(shift),method: :delete ,remote: true%>
+          <%end%>
+        </td>
       </tr>     
     <% end %>
 
