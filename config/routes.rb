@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :shifts
+  resources :shifts do
+    collection do
+      post :filter_data
+    end
+  end
   resources :organisations do
   	member do
   		get "join_in_or_out",action: :join_in_or_out,as: :join_in_or_out 
