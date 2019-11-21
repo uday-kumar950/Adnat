@@ -2,3 +2,8 @@
 * Rails version - Rails 5.1.7
 * Oraganisations added in seed file (plz use rake db:seed)
 * Model Rspec Test Cases added for Shift (/spec/models/shift_spec.rb)
+
+Optional Tasks Done:
+
+* Edit/delete Shifts.
+* Added filters in Shifts page. 
